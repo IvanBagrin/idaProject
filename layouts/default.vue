@@ -3,6 +3,7 @@
     <Header />
     <Catalogmenu />
     <Nuxt />
+    <Cart />
   </div>
 </template>
 
