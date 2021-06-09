@@ -2,13 +2,30 @@
     <div class="catalogmenu">
         <div class="catalogmenu__title">Каталог</div>
             <ul class="catalogmenu__wrapper">
-                <li class="catalogmenu__item"><a href="#">Рюкзаки</a></li>
-                <li class="catalogmenu__item"><a href="#">Футболки</a></li>
-                <li class="catalogmenu__item"><a href="#">Рубашки</a></li>
+                <li class="catalogmenu__item" v-for="item in items" :key="item.id"><a href="#">{{item.name}}</a></li>
             </ul>
     </div>
 
 </template>
+
+
+<script>
+export default {
+    data: function() {
+        return {
+            items: []
+        }
+    },
+   
+    mounted() {
+        this.$axios
+            .get("https://frontend-test.idaproject.com/api/product-category")
+            .then((response) => {
+                this.items = response.data
+            })
+    }
+}
+</script>
 
 
 <style lang="scss">

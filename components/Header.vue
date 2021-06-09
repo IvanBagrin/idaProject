@@ -31,7 +31,7 @@ height: 66px;
 left: 0px;
 top: 0px;
 align-items: center;
-z-index: 9;
+z-index: 90;
 background: #ffffff;
     &__logo {
         margin-left: 88px;

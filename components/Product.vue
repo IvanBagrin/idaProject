@@ -1,7 +1,7 @@
 <template>
     <div class="product">
 
-         <div class="product__item1">
+         <div class="product__item" :data-category ="this.$props.item.category">
             <div class="product__item_header">
                 <div class="product__item_rating">
                     <div class="product__item_star">
@@ -9,7 +9,7 @@
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M7.00002 0.125C7.2379 0.125 7.45517 0.260045 7.56046 0.47336L9.34643 4.09154L13.3404 4.67532C13.5758 4.70972 13.7712 4.87473 13.8445 5.10098C13.9179 5.32723 13.8565 5.57552 13.6861 5.74147L10.7966 8.55585L11.4785 12.5318C11.5187 12.7663 11.4223 13.0033 11.2299 13.1432C11.0374 13.283 10.7822 13.3014 10.5716 13.1907L7.00002 11.3124L3.42843 13.1907C3.21785 13.3014 2.96267 13.283 2.77018 13.1432C2.5777 13.0033 2.48129 12.7663 2.52151 12.5318L3.20344 8.55585L0.313935 5.74147C0.143549 5.57552 0.0821284 5.32723 0.155489 5.10098C0.22885 4.87473 0.424275 4.70972 0.659626 4.67532L4.6536 4.09154L6.43958 0.47336C6.54487 0.260045 6.76213 0.125 7.00002 0.125ZM7.00002 2.16203L5.62921 4.93914C5.53825 5.12342 5.36251 5.25121 5.15916 5.28093L2.09278 5.72913L4.3111 7.88978C4.45852 8.03336 4.52581 8.24032 4.49102 8.44315L3.96763 11.4948L6.70911 10.0531C6.89122 9.95731 7.10881 9.95731 7.29093 10.0531L10.0324 11.4948L9.50901 8.44315C9.47422 8.24032 9.54151 8.03336 9.68893 7.88978L11.9073 5.72913L8.84087 5.28093C8.63753 5.25121 8.46179 5.12342 8.37083 4.93914L7.00002 2.16203Z" fill="#F2C94C"/>
                         </svg>
                     </div>
-                    <div class="product__item_score">4.5</div>
+                    <div class="product__item_score">{{this.$props.item.rating}}</div>
                 </div>
             <div class="product__item_cart">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -20,11 +20,11 @@
             </div>
             </div>
             <div class="product__item_img">
-                <img src="img/product/louisv.png"/>
+                <img :src="`https://frontend-test.idaproject.com${this.$props.item.photo}`"/>
             </div>
             <div class="product__item_bottom">
-                <div class="product__item_title">Рюкзак Louis Vuitton Discovery</div>
-                <div class="product__item_price">150 000 ₽</div>
+                <div class="product__item_title">{{this.$props.item.name}}</div>
+                <div class="product__item_price">{{this.$props.item.price}} ₽</div>
             </div>
 
         </div>
@@ -39,6 +39,14 @@
 
 
 </template>
+
+
+<script>
+export default {
+    props: ['item'],
+   
+}
+</script>
 
 <style lang="scss">
 .product {
@@ -101,8 +109,10 @@
             top: 18px;
             left: 50%;
             transform: translateX(-50%);
+            height: 180px;
             //text-align: center;
             img {
+                height: 100%;
                 margin: 0px auto;
             }
         }
