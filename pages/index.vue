@@ -1,5 +1,6 @@
 <template>
-  <div class="container">
+
+    <div class="container">
     <div class="sort">
       <div class="sort__wrapper">
         <div  class="sort__title">Сортировать по:</div>
@@ -22,8 +23,8 @@
     <div class="product__item">
       <Product v-for="item in items" :key="item.id" :item="item" />
       
-    </div>
 
+  </div>
   </div>
 </template>
 
@@ -34,13 +35,15 @@ export default {
         return {
             items: [],
             sorSelectActive: false,
+            itemsAll: [],
+            
         }
     },
     methods: {
       sortProduct(event) {
         if(event === 'price') {
           this.items = this.items.sort((a,b) => b.price - a.price);
-          console.log(this.$refs.sortText.textContent = 'цене')
+          this.$refs.sortText.textContent = 'цене'
         }
         if(event === 'popularity') {
           this.items = this.items.sort((a,b) => b.rating - a.rating);
@@ -50,18 +53,29 @@ export default {
         this.sorSelectActive = !this.sorSelectActive;
 
 
-      }
-    },
+      },
+ 
+      },
    
     mounted() {
-        this.$axios
+          this.$axios
             .get("https://frontend-test.idaproject.com/api/product")
             .then((response) => {
-                 this.items = response.data
-               // console.log(response.data);
+                 this.items = response.data;
+                 this.itemsAll = response.data;
                 
             })
+            this.$root.$on('remove', (id) => {
+              this.list = this.itemsAll;
+              this.list = this.list.filter(item => 
+                item.category == id)
+                this.items = this.list;
+            })
+
     }
+    
+
+    
 }
 </script>
 

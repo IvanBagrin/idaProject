@@ -2,7 +2,7 @@
     <div class="catalogmenu">
         <div class="catalogmenu__title">Каталог</div>
             <ul class="catalogmenu__wrapper">
-                <li class="catalogmenu__item" v-for="item in items" :key="item.id"><a href="#">{{item.name}}</a></li>
+                <li class="catalogmenu__item" :data-catalog = "item.id" v-for="item in items" v-on:click="clickHandler(item)" :key="item.id" ><a href="#">{{item.name}}</a></li>
             </ul>
     </div>
 
@@ -15,6 +15,20 @@ export default {
         return {
             items: []
         }
+    },
+    methods: {
+    clickHandler : function(item){
+      this.$root.$emit('remove', item.id);
+
+     
+      for(let key of document.querySelectorAll(".catalogmenu__item")) {
+          key.classList.remove("active");
+          if (key.getAttribute("data-catalog") == item.id)  key.classList.add("active")
+      }
+
+      
+      
+    }
     },
    
     mounted() {
@@ -49,18 +63,29 @@ export default {
     }
     &__item {
         margin: 0;
-        
+
         a {
             text-decoration: none;
             font-size: 16px;
             line-height: 30px;
             color: #959DAD;
             &:hover {
-                text-decoration-line: underline;
-                color: #1F1F1F;
+                font-weight: 10px;
                 transition: .5s;
+                color: #59606D;
             }
+            
         }
+    }
+    .active {
+        a {
+            border-bottom: 1px solid #1F1F1F;
+            color: #1F1F1F;
+            font-weight: 10px;
+            transition: .5s;
+
+        }
+
     }
 }
 </style>

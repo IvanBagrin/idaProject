@@ -68,6 +68,7 @@ export default {
     &__item {
 
         &_header {
+            width: 100%;
             display: grid;
             grid-template-columns: repeat(2, auto);
             justify-content: space-between;
@@ -95,6 +96,7 @@ export default {
             line-height: 17px;
         }
         &_cart {
+            z-index: 999;
             cursor: pointer;
             svg:hover {
                 transition: .3s;
