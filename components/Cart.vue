@@ -1,9 +1,9 @@
 <template>
-    <div class="cart__bg" :class="{active: handleCartCheck}">
+    <div class="cart__bg" :class="{active: handleCartCheck} " >
         <div class="cart">
             <div class="cart__header">
                 <div class="cart__header_title">Корзина</div>
-                <div class="cart__header_close"  @click="handleCartCheck = !handleCartCheck">
+                <div class="cart__header_close"  @click="closeCart()">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289Z" fill="black"/>
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z" fill="black"/>
@@ -12,19 +12,17 @@
                 </div>
             </div>
 
-            <div class="cart__body" v-if="count>0">
+            <div class="cart__body" v-if="$store.state.productCart.length>0">
                 <div class="cart__subheader" >
                     Товары в корзине
                 </div>
 
-                <Cartproduct />
+                <Cartproduct v-for="(item, index) in productCart" :key="item.id+Math.random()" :item="item" :index="index" />
 
-                <Cartform />
+                <Cartform  />
 
 
-                <div class="cart__attention">
-                    Все поля обязательные. После удачной отправки формы содержимое корзины очищается
-                </div>
+
             </div>
 
             <div class="cart__body" v-else>
@@ -32,7 +30,7 @@
                     Пока что вы ничего не добавили
                     в корзину.
                 </div>
-                <button class="cart__body_btnToProduct" @click="handleCartCheck = !handleCartCheck">Перейти к выбору</button>
+                <button class="cart__body_btnToProduct" @click="closeCart()">Перейти к выбору</button>
                 
             </div>
 
@@ -48,14 +46,25 @@ export default {
     data: function() {
         return {
             handleCartCheck: false,
-            count: 0,
+            productCart: this.$store.state.productCart,
         }
+    },
+    methods : {
+    delProductCart : function (index) {
+        this.$store.commit('dellProductCart', index);
+    },
+    closeCart : function() {
+        this.handleCartCheck = !this.handleCartCheck
+        document.body.classList.toggle('cart__bg_hidden');
+    }
     },
     mounted() {
         this.$root.$on('handleCart', () => {
             this.handleCartCheck = !this.handleCartCheck;
-            console.log(this.handleCartCheck)
+            
     })
+
+    
 }
 }
 </script>
@@ -72,6 +81,7 @@ export default {
     box-shadow: -4px 0px 16px rgba(0, 0, 0, 0.05);
     border-radius: 8px 0px 0px 8px;
     z-index: 999;
+    overflow-y: auto; 
     
     &__bg {
         position: fixed;
@@ -109,25 +119,7 @@ export default {
         color: #59606D;
     }
 
-    &__attention {
-        position: relative;
-        margin-top: 32px;
-        font-size: 16px;
-        line-height: 21px;
-        color: #000000;
-        margin-left: 27px;
 
-        &:before {
-            content: '!!';
-            position: absolute;
-            top: -4px;
-            left: -27px;
-            font-weight: bold;
-            font-size: 32px;
-            line-height: 41px;
-            color: #EB5757;
-        }
-    }
     &__body {
         &_descr {
             font-size: 22px;

@@ -14,5 +14,8 @@ body {
   font-family: 'PT Sans', sans-serif;
   min-height: 100vh;
 }
+.cart__bg_hidden {
+  overflow: hidden!important;
+}
 
 </style>

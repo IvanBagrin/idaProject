@@ -16,7 +16,7 @@
         </a>
 
         <div class="header__score">
-            0
+            {{this.$store.state.count}}
         </div>
     </div>
 </template>>
@@ -26,7 +26,8 @@ export default {
     handleCart : function(){
     
       this.$root.$emit('handleCart');
-
+      document.body.classList.toggle('cart__bg_hidden');
+        
     }
     }
 }

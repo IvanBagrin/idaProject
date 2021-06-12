@@ -1,20 +1,48 @@
 <template>
-    <form action="#" class="cart__form">
-        <div class="cart__form_title">Оформить заказ</div>
-        <input type="text" placeholder="Ваше имя" class="cart__form_input">
-        <input type="text" placeholder="Телефон" class="cart__form_input">
-        <input type="text" placeholder="Адрес" class="cart__form_input">
-        <button class="cart__form_button active">Отправить</button>
-    </form>
+    <div>
+        <form action="#" class="cart__form">
+            <div class="cart__form_title">Оформить заказ</div>
+            <input type="text" placeholder="Ваше имя" class="cart__form_input">
+            <input type="text" placeholder="Телефон" class="cart__form_input">
+            <input type="text" placeholder="Адрес" class="cart__form_input">
+            <button class="cart__form_button active">Отправить</button>
+        </form>
+                <div class="cart__attention">
+                    Все поля обязательные. После удачной отправки формы содержимое корзины очищается
+                </div>  
+
+    </div>
+  
+
 </template>
 
 <style lang="scss">
 
+.cart {
+    &__attention {
+            position: relative;
+            margin-top: 32px;
+            font-size: 16px;
+            line-height: 21px;
+            color: #000000;
+            margin-left: 27px;
+            padding-bottom: 150px;
 
-
-    .cart__form {
+            &:before {
+                content: '!!';
+                position: absolute;
+                top: -4px;
+                left: -27px;
+                font-weight: bold;
+                font-size: 32px;
+                line-height: 41px;
+                color: #EB5757;
+        }
+    }
+    &__form {
         display: block;
         margin-top: 32px;
+        
         &_title {
             font-size: 18px;
             line-height: 23px;
@@ -47,10 +75,12 @@
             color: #FFFFFF;
             cursor: pointer;
         }
+
         .active {
             background: #59606D;
         }
         
 
+    }
     }
 </style>
