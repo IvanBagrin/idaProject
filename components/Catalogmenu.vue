@@ -1,6 +1,15 @@
 <template>
-    <div class="catalogmenu">
+    <div class="catalogmenu" :class="{catalogmenu__active: $store.state.catalogActive} ">
+                <div class="catalogmenu__close"  @click="$store.commit('catalogActive')">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289Z" fill="black"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z" fill="black"/>
+                    </svg>
+
+                </div>
         <div class="catalogmenu__title">Каталог</div>
+
+
             <ul class="catalogmenu__wrapper">
                 <li class="catalogmenu__item" :data-catalog = "item.id" v-for="item in items" v-on:click="clickHandler(item)" :key="item.id" ><a href="#">{{item.name}}</a></li>
             </ul>
@@ -19,6 +28,7 @@ export default {
     methods: {
     clickHandler : function(item){
       this.$root.$emit('remove', item.id);
+      this.$store.commit('catalogActive', this.item);
 
      
       for(let key of document.querySelectorAll(".catalogmenu__item")) {
@@ -43,49 +53,5 @@ export default {
 
 
 <style lang="scss">
-.catalogmenu {
-    position: fixed;
-    margin-top: 32px;
-    min-width: 248px;
-    padding: 0 0 0 88px;
-    left: 0px;
-    top: 57px;
-    &__title {
-        font-weight: bold;
-        font-size: 32px;
-        line-height: 41px;
-        color: #1F1F1F;
-    }
-    &__wrapper {
-        list-style-type: none;
-        margin: 24px 0 0 0;
-        padding: 0;
-    }
-    &__item {
-        margin: 0;
 
-        a {
-            text-decoration: none;
-            font-size: 16px;
-            line-height: 30px;
-            color: #959DAD;
-            &:hover {
-                font-weight: 10px;
-                transition: .5s;
-                color: #59606D;
-            }
-            
-        }
-    }
-    .active {
-        a {
-            border-bottom: 1px solid #1F1F1F;
-            color: #1F1F1F;
-            font-weight: 10px;
-            transition: .5s;
-
-        }
-
-    }
-}
 </style>

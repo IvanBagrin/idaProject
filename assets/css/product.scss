@@ -1,0 +1,102 @@
+.product {
+    // display: grid;
+    // grid-template-columns: repeat(4, 264px);
+    // grid-template-rows: 272px;
+    // grid-auto-rows: 272px;
+    // gap: 16px;
+    z-index: 8;
+    margin: 16px 0 0 50px;
+    position: relative;
+    width: 232px;
+    min-height: 238px;
+    padding: 18px 16px 16px 16px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+
+    &__item {
+
+        &_header {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, auto);
+            justify-content: space-between;
+        }
+        &_rating {
+            display: grid;
+            grid-template-columns: repeat(2, auto);
+        }
+        &_star {
+            width: 20px;
+            height: 20px;
+            margin: 0px;
+            padding: 0px;
+            svg {
+                position: relative;
+                
+                left: 50%;
+                transform: translateX(-50%);
+                path {
+                    top: 10px;
+                }
+            }
+            &_bg {
+                top: 10px;
+            }
+        }
+        &_score {
+            font-weight: bold;
+            font-size: 10px;
+            color: #F2C94C;
+            line-height: 17px;
+        }
+        &_cart {
+            z-index: 999;
+            cursor: pointer;
+            svg:hover {
+                transition: .3s;
+                
+                // border: 1px solid red;
+                border-radius: 5px;
+                path {
+                    fill:  rgba(21, 20, 20, 0.918);
+                }
+                
+            }
+        }
+        &_img {
+            position: absolute;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 180px;
+            //width: 100%;
+            //text-align: center;
+            img {
+                height: 100%;
+                
+                margin: 0px auto;
+            }
+        }
+        &_title {
+            display: block;
+            position: relative;
+        }
+        &_bottom {
+            position: absolute;
+            bottom: 16px;
+        }
+        &_title {
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 18px;
+            color: #59606D;
+        }
+        &_price {
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 22px;
+            color: #1F1F1F;
+        }
+    }
+}

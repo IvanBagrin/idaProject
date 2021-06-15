@@ -1,0 +1,42 @@
+.header {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 66px;
+    left: 0px;
+    top: 0px;
+    align-items: center;
+    z-index: 90;
+    background: #ffffff;
+        &__logo {
+            margin-left: 88px;
+            cursor: pointer;
+            
+        }
+        &__cart {
+            margin-right: 102px;
+            z-index: 9;
+            cursor: pointer;
+        }
+        &__score {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #959DAD;
+            right: 102px;
+            margin-top: -25px;
+            border-radius: 100%;
+            font-weight: bold;
+            font-size: 10px;
+            line-height: 12px;
+            text-align: center;
+            color: #ffffff;
+            z-index: 10;
+            cursor: pointer;
+        }
+        
+           
+    
+       
+    }

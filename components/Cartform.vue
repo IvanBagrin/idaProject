@@ -1,86 +1,72 @@
 <template>
-    <div>
-        <form action="#" class="cart__form">
-            <div class="cart__form_title">Оформить заказ</div>
-            <input type="text" placeholder="Ваше имя" class="cart__form_input">
-            <input type="text" placeholder="Телефон" class="cart__form_input">
-            <input type="text" placeholder="Адрес" class="cart__form_input">
-            <button class="cart__form_button active">Отправить</button>
-        </form>
-                <div class="cart__attention">
-                    Все поля обязательные. После удачной отправки формы содержимое корзины очищается
-                </div>  
 
+    <div>
+    
+    
+        <div  class="cart__form" >
+            <div class="cart__form_title">Оформить заказ</div>
+
+            
+                <input  type="text"  id = "name" placeholder="Ваше имя" class="cart__form_input" >
+                
+                
+            
+
+            <input type="text" id = "phone" placeholder="Телефон" class="cart__form_input" v-mask="'+7 ### ###-##-##'" v-model="inputPhoneModel">
+            <input type="text" id = "address" placeholder="Адрес" class="cart__form_input">
+            
+            <button class="cart__form_button " :class="{active: btnActive} " @click="toSend()">Отправить</button>
+            <div class="cart__form_text">Все поля обязательны для заполнения</div>
+        </div>
+        
+        
+          
     </div>
   
 
 </template>
 
+<script>
+
+
+export default {
+    data() {
+      return {
+        inputPhoneModel: '',
+        btnActive: false,
+      };
+    },
+    methods: {
+        toSend() {
+            if (document.getElementById('name').value == '' || document.getElementById('phone').value == '' || document.getElementById('address').value == '') {
+                document.querySelector('.cart__form_text').style.display = 'block';
+                this.btnActive = true;
+                
+            } else {
+                console.log(
+                
+                `Список товаров ${JSON.stringify(this.$store.state.productCart)}`,
+            )
+            this.$store.commit('toSend', true);
+            this.$store.commit('clearProductCart');
+            document.querySelector('.cart__form_text').style.display = 'none';
+            this.btnActive = false;
+            }
+
+            
+        }
+    },
+
+    mounted() {
+        
+    },
+
+ 
+}
+
+</script>
+
 <style lang="scss">
 
-.cart {
-    &__attention {
-            position: relative;
-            margin-top: 32px;
-            font-size: 16px;
-            line-height: 21px;
-            color: #000000;
-            margin-left: 27px;
-            padding-bottom: 150px;
 
-            &:before {
-                content: '!!';
-                position: absolute;
-                top: -4px;
-                left: -27px;
-                font-weight: bold;
-                font-size: 32px;
-                line-height: 41px;
-                color: #EB5757;
-        }
-    }
-    &__form {
-        display: block;
-        margin-top: 32px;
-        
-        &_title {
-            font-size: 18px;
-            line-height: 23px;
-            color: #59606D;
-        }
-        &_input {
-            display: flex;
-            flex-direction: column;
-            margin-top: 16px;
-            background: #F8F8F8;
-            border-radius: 8px;
-            width: calc(100% - 28px);
-            height: 50px;
-            border: none;
-            font-size: 16px;
-            line-height: 21px;
-            color: #959DAD;
-            padding: 0px 14px;
-        }
-        
-        &_button {
-            margin-top: 24px;
-            width: 100%;
-            height: 50px;
-            background: #1F1F1F;
-            border-radius: 8px;
-            font-size: 16px;
-            line-height: 21px;
-            padding: 14px 0;
-            color: #FFFFFF;
-            cursor: pointer;
-        }
-
-        .active {
-            background: #59606D;
-        }
-        
-
-    }
-    }
 </style>

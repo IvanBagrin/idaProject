@@ -6,6 +6,10 @@
             </svg>
         </a>
 
+        <div class="catalog__open" @click="$store.commit('catalogActive')">
+            <svg height="384pt" viewBox="0 -53 384 384" width="384pt" xmlns="http://www.w3.org/2000/svg"><path d="m368 154.667969h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"/><path d="m368 32h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"/><path d="m368 277.332031h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"/></svg>
+      </div>
+
         <a class="header__cart" v-on:click="handleCart()">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M7.84 3.48C8.06663 3.17783 8.42229 3 8.8 3H23.2C23.5777 3 23.9334 3.17783 24.16 3.48L27.76 8.28C27.9158 8.48772 28 8.74036 28 9V25.8C28 26.7548 27.6207 27.6705 26.9456 28.3456C26.2705 29.0207 25.3548 29.4 24.4 29.4H7.6C6.64522 29.4 5.72955 29.0207 5.05442 28.3456C4.37928 27.6705 4 26.7548 4 25.8V9C4 8.74036 4.08421 8.48772 4.24 8.28L7.84 3.48ZM9.4 5.4L6.4 9.4V25.8C6.4 26.1183 6.52643 26.4235 6.75147 26.6485C6.97652 26.8736 7.28174 27 7.6 27H24.4C24.7183 27 25.0235 26.8736 25.2485 26.6485C25.4736 26.4235 25.6 26.1183 25.6 25.8V9.4L22.6 5.4H9.4Z" fill="#1F1F1F"/>
@@ -15,7 +19,7 @@
 
         </a>
 
-        <div class="header__score">
+        <div class="header__score" v-on:click="handleCart()">
             {{this.$store.state.count}}
         </div>
     </div>
@@ -34,45 +38,5 @@ export default {
 </script>
 
 <style lang="scss">
-.header {
-position: fixed;
-display: flex;
-justify-content: space-between;
-width: 100%;
-height: 66px;
-left: 0px;
-top: 0px;
-align-items: center;
-z-index: 90;
-background: #ffffff;
-    &__logo {
-        margin-left: 88px;
-        cursor: pointer;
-    }
-    &__cart {
-        margin-right: 102px;
-        z-index: 9;
-        cursor: pointer;
-    }
-    &__score {
-        position: absolute;
-        width: 12px;
-        height: 12px;
-        background: #959DAD;
-        right: 102px;
-        margin-top: -25px;
-        border-radius: 100%;
-        font-weight: bold;
-        font-size: 10px;
-        line-height: 12px;
-        text-align: center;
-        color: #ffffff;
-        z-index: 10;
-        cursor: pointer;
-    }
-    
-       
 
-   
-}
 </style>

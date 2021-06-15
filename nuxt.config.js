@@ -17,11 +17,20 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '@/assets/css/cartform.scss',
+    '@/assets/css/cart.scss',
+    '@/assets/css/cartproduct.scss',
+    '@/assets/css/catalogmenu.scss',
+    '@/assets/css/header.scss',
+    '@/assets/css/product.scss',
+    '@/assets/css/index.scss',
+    '@/assets/css/media.scss'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-  ],
+    '@plugins/v-mask.js',
+ ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

@@ -1,0 +1,132 @@
+.cart {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 460px;
+    padding: 52px 48px;
+    background: #FFFFFF;
+    box-shadow: -4px 0px 16px rgba(0, 0, 0, 0.05);
+    border-radius: 8px 0px 0px 8px;
+    z-index: 999;
+    overflow-y: auto; 
+    right: -150%;
+    transition: .5s;
+    
+    &__bg {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        background: rgba(255,255,255, 0.8);
+        right: -200px;
+        //display: none;
+        z-index: 998;
+        right: -150%;
+        transition: .1s;
+        
+        
+    }
+    &__header {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &_title {
+            font-weight: bold;
+            font-size: 32px;
+            line-height: 41px;
+            color: #000000;
+        }
+        &_close {
+            position: absolute;
+            right: 0;
+            top: 25%;
+            cursor: pointer;
+            // &-ok {
+                
+            // }
+        }
+    }
+    &__subheader {
+        margin-top: 24px;
+        font-size: 18px;
+        line-height: 23px;
+        color: #59606D;
+    }
+
+
+    &__body {
+        &_descr {
+            font-size: 22px;
+            line-height: 28px;
+            color: #000000;
+            width: 364px;
+            margin: 24px 0;
+        }
+        &_btnToProduct {
+            height: 50px;
+            width: 100%;
+            background: #1F1F1F;
+            border-radius: 8px;
+            font-size: 16px;
+            line-height: 21px;
+            text-align: center;
+            color: #FFFFFF;
+            border: none;
+            cursor: pointer;
+        }
+    }
+    &__ok {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 460px;
+        padding: 52px 48px;
+        background: #FFFFFF;
+        box-shadow: -4px 0px 16px rgb(0 0 0 / 5%);
+        border-radius: 8px 0px 0px 8px;
+        z-index: 999;
+        overflow-y: auto;
+        display: none;
+        
+        
+        &_body {
+            width: 100%;
+            text-align: center;
+
+        }
+        &_img {
+            width: 100%;
+            margin-top: 300px;
+            img {
+                display: block;
+                margin-left: auto;
+                margin-right: auto
+            }
+        }
+        &_title {
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 31px;
+            color: #000000;
+        }
+        &_subtitle {
+            font-size: 16px;
+            line-height: 21px;
+            color: #59606D;
+            margin-top: 2px;
+        }
+        &_active {
+            display: block;
+        }
+    }
+
+
+
+}
+.cart__active {
+    right: 0%;
+    
+        }
