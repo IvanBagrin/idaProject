@@ -5,13 +5,17 @@
     <div class="sort">
       <div class="sort__wrapper">
         <div  class="sort__title">Сортировать по:</div>
-        <div class="sort__subtitle" @click = "sorSelectActive = !sorSelectActive" ref = "sortText">цене</div>
-        <div class="sort__icon">
-          <svg width="5" height="3" viewBox="0 0 5 3" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M5 0H0L2.5 2.5L5 0Z" fill="#59606D"/>
+        <div class="sort__wrapper_click" @click = "sorSelectActive = !sorSelectActive">
+          <div class="sort__subtitle"  ref = "sortText">цене</div>
+          <div class="sort__icon" >
+            <svg width="5" height="3" viewBox="0 0 5 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 0H0L2.5 2.5L5 0Z" fill="#59606D"/>
           </svg>
 
         </div>
+
+        </div>
+        
       </div>
 
       <div class="sort__select" :class="{active: sorSelectActive}">
@@ -21,7 +25,7 @@
         
       </div>
     </div>
-    <div class="product__item">
+    <div class="product__body">
       <Product v-for="item in items" :key="item.id" :item="item" />
       
 

@@ -1,11 +1,6 @@
 .product {
-    // display: grid;
-    // grid-template-columns: repeat(4, 264px);
-    // grid-template-rows: 272px;
-    // grid-auto-rows: 272px;
-    // gap: 16px;
     z-index: 8;
-    margin: 16px 0 0 50px;
+    margin: 16px 0 0 16px;
     position: relative;
     width: 232px;
     min-height: 238px;
@@ -13,9 +8,13 @@
     background: #FFFFFF;
     box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.05);
     border-radius: 8px;
-
+    &__body {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: 50px;
+    }
     &__item {
-
+        
         &_header {
             width: 100%;
             display: grid;
@@ -43,6 +42,14 @@
             &_bg {
                 top: 10px;
             }
+        }
+        &_starContur {
+            z-index: 100;
+        }
+        &_starSolid {
+            position: absolute;
+            top: -105%;
+            z-index: 10;
         }
         &_score {
             font-weight: bold;

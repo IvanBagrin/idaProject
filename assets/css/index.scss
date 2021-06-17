@@ -23,6 +23,11 @@
     align-items: center;
     cursor: pointer;
     // text-align: center;
+    &_click {
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      align-items: center;
+    }
   }
   &__subtitle {
     margin-left: 6px;
